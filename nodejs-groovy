@@ -1,6 +1,8 @@
 job('NodeJS-DSL') {
 	scm {
-		git('git://github.com/tewks18/course.git') {
+		git('git://github.com/tewks18/course.git') { node ->
+			node / gitConfigName('tewks18')
+			node / gitConfigEmail('tewks@sbcglobal.net')
 		}
 	}
 	
