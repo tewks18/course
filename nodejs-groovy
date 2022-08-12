@@ -1,6 +1,6 @@
 job('NodeJS-DSL') {
 	scm {
-		git('git://github.com/wardviaene/dcoker-demo.git') { node ->
+		git('git://github.com/tewks18/course.git') { node ->
 			node / gitConfigName('DSL User')
 			node / gitConfigEmail('jenkins-dsl@newtech.academy')
 		}
