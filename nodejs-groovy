@@ -7,7 +7,7 @@ job('NodeJS-DSL') {
 	}
 	
 	triggers {
-		scm('H/5 ****')
+		scm('H/5 * * * *')
 	}
 	
 	wrappers {
