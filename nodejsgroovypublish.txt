@@ -22,13 +22,14 @@ job('NodeJS-DSL') {
 	}
 	
 	steps {
-		dockerBuildAndPublish {
-			repositoryName('course')
-			tag('$(GIT_REVISION,length=9)')
-			forcePull('false')
-			forceTag('false')
-			createFingerprints('false')
-			skipDecorate()
+        dockerBuildAndPublish {
+            repositoryName('wardviaene/docker-nodejs-demo')
+            tag('${GIT_REVISION,length=9}')
+            registryCredentials('dockerhub')
+            forcePull(false)
+            forceTag(false)
+            createFingerprints(false)
+            skipDecorate()
 		}
 	}
 }
