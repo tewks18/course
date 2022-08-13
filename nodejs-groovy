@@ -1,0 +1,20 @@
+job('NodeJS-DSL') {
+	scm {
+		git('git://github.com/tewks18/course.git') { node ->
+			node / gitConfigName('tewks18')
+			node / gitConfigEmail('tewks@sbcglobal.net')
+		}
+	}
+	
+	triggers {
+		scm('H/5 * * * *')
+	}
+	
+	wrappers {
+		nodejs('nodejs')
+	}
+	
+	steps {
+		shell("npm install")
+	}
+}

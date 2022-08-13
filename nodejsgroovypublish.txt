@@ -15,7 +15,7 @@ job('NodeJS-DSL') {
 	}
 	
 	steps {
-		dockerbuildAndPublish {
+		dockerBuildAndPublish {
 			repositoryName('course')
 			tag('$(GIT_REVISION,length=9)')
 			registryCredientials('ab89f759-35a1-40e3-85b4-c73c504d31a9')
