@@ -18,7 +18,7 @@ job('NodeJS-DSL') {
 		dockerbuildAndPublish {
 			repositoryName('course')
 			tag('$(GIT_REVISION,length=9)')
-			registryCredientials('dockerhub')
+			registryCredientials('ab89f759-35a1-40e3-85b4-c73c504d31a9')
 			forcePull('false')
 			forceTag('false')
 			createFingerprints('false')
