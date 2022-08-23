@@ -1,0 +1,35 @@
+import org.jenkinsci.plugins.scriptsecurity.scripts.ScriptApproval
+
+ScriptApproval scriptApproval = ScriptApproval.get()
+scriptApproval.pendingScripts.each {
+    scriptApproval.approveScript(it.hash)
+}
+
+job('NodeJS-DSL') {
+	scm {
+		git('https://github.com/wardviaene/docker-demo.git') { node ->
+			node / gitConfigName('DSL User')
+			node / gitConfigEmail('jenkins-dsl@newtech.academy')
+		}
+	}
+	
+	triggers {
+		scm('H/5 * * * *')
+	}
+	
+	wrappers {
+		nodejs('nodejs')
+	}
+	
+	steps {
+        dockerBuildAndPublish {
+            repositoryName('tewks18/docker-nodejs-demo')
+            tag('${GIT_REVISION,length=9}')
+            registryCredentials('dockerhub')
+            forcePull(false)
+            forceTag(false)
+            createFingerprints(false)
+            skipDecorate()
+		}
+	}
+}
